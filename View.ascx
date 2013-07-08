@@ -85,11 +85,8 @@
         ItemPlaceholderID="PlaceHolder1" AllowPaging="true" OnItemDataBound="ThreadsListView_ItemDataBound">
         <LayoutTemplate>
             <table width="100%" cellspacing="0" cellpadding="0">
-                <tr>
-                    <td width="3%" class="forum_topics_header" style="border-left: none;">
-                        <asp:Label ID="LangLAbel" runat="server" resourcekey="Lang"></asp:Label>
-                    </td>
-                    <td width="60%" class="forum_topics_header" style="text-align: left">
+                <tr>                   
+                    <td width="63%" class="forum_topics_header" style="text-align: left">
                         <asp:Label ID="topicLbl" runat="server" resourcekey="Threads"></asp:Label>
                     </td>
                     <td width="12%" class="forum_topics_header">
@@ -106,7 +103,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td colspan="6" class="ordering">
+                    <td colspan="5" class="ordering">
                         <asp:Label ID="orderLbl" runat="server" resourcekey="Orderby"></asp:Label>
                         <asp:LinkButton ID="orderPopular" runat="server" OnClick="Sorting_Click" CommandArgument="desc"
                             CommandName="PostsCount" ForeColor="#003399" resourcekey="popularity" />
@@ -125,18 +122,14 @@
         </LayoutTemplate>
         <ItemTemplate>
             <tr>
-                <td class="flagTD" rowspan="2">
-                    <div id="topicLang" runat="server">
-                        <div id="hotThread" runat="server" visible="false">
-                        </div>
-                    </div>
-                    <asp:Label ID="nationalLbl" runat="server"></asp:Label>
-                    <asp:HyperLink ID="EditLink" runat="server" ToolTip="Edit this thread" Visible="false" />
-                </td>
+                
+                <!-- culture param must be added to link if multilingual site -->
+                
                 <td class="topic_Sumary">
-                    <a href="<%#ConfigurationManager.AppSettings["DomainName"] %>/<%=culture %>/udebatediscussion.aspx?Thread=<%#Eval("Thread_ID") %>"
+                    <a href="<%#ConfigurationManager.AppSettings["DomainName"] %>/udebatediscussion.aspx?Thread=<%#Eval("Thread_ID") %>"
                         class="topic_Descr_link">
-                        <asp:Label ID="Thread_DescLabel" runat="server" Text='<%#Eval("Thread_Desc") %>'></asp:Label>                        
+                        <asp:Label ID="Thread_DescLabel" runat="server" Text='<%#Eval("Thread_Desc") %>'></asp:Label>   
+                        <asp:HyperLink ID="EditLink" runat="server" ToolTip="Edit this thread" Visible="false" />                     
                     </a>
                     <br />
                     <asp:Label ID="Thread_SubtitleLbl" runat="server" CssClass="topic_Descr_sub" Text='<%#Eval("Thread_Subtitle") %>'></asp:Label>

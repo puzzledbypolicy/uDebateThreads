@@ -36,7 +36,7 @@
             </asp:RadioButtonList>
         </td>
         <td>
-            <asp:Label ID="Label1" runat="server" Text="Active" resourcekey="European"></asp:Label>
+            <asp:Label ID="Label1" runat="server" Text="Is European?" resourcekey="European"></asp:Label>
         </td>
         <td>
             <asp:RadioButtonList ID="chkEuropean" runat="server" RepeatDirection="Horizontal">

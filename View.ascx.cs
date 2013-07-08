@@ -36,7 +36,7 @@ namespace DotNetNuke.Modules.uDebateThreads
             /* IF no topic is passed we redirect the user to the udebta start page*/ 
             if (TopicID.Equals(""))
             {
-                Response.Redirect(ConfigurationManager.AppSettings["DomainName"] + "/" + culture + "/udebate.aspx");
+                Response.Redirect(ConfigurationManager.AppSettings["DomainName"] + /*"/" + culture +*/ "/udebate.aspx");
             }
 
             SqluDebateThreads.SelectParameters["TopicID"].DefaultValue = TopicID;
@@ -49,8 +49,8 @@ namespace DotNetNuke.Modules.uDebateThreads
                 {
                     newThreadLink.NavigateUrl = ConfigurationManager.AppSettings["DomainName"] + "/tabid/" +
                         PortalSettings.ActiveTab.TabID + "/ctl/Edit/mid/" + ModuleId +
-                   "/Topic/" + TopicID + "/ThreadID/-1" +
-                        "/language/" + culture + "/default.aspx";
+                   "/Topic/" + TopicID + "/ThreadID/-1" /*+
+                        "/language/" + culture */+ "/default.aspx";
 
                     newThreadLink.CssClass = "forum_button_thread";
                     newThreadLink.Text = " ";
@@ -63,7 +63,7 @@ namespace DotNetNuke.Modules.uDebateThreads
                 {
                     editTopikLink.NavigateUrl = ConfigurationManager.AppSettings["DomainName"] + "/tabid/" +
                      PortalSettings.ActiveTab.TabID + "/ctl/EditForum/mid/" + ModuleId +
-                   "/TopicID/" + TopicID + "/editItem/TOPIC/language/" + culture + "/default.aspx";
+                   "/TopicID/" + TopicID + "/editItem/TOPIC/language/" /*+ culture */+ "/default.aspx";
 
                     editTopikLink.ImageUrl = ATC.Tools.GetParam("RootURL") + "Images/manage-icn.png";
                     editTopikLink.Attributes.Add("onclick", "return " + UrlUtils.PopUpUrl(editTopikLink.NavigateUrl, this, PortalSettings, true, false));
@@ -77,7 +77,9 @@ namespace DotNetNuke.Modules.uDebateThreads
             orderDate.CssClass = "";
 
             threadDesc.Text = getDecriptionOfTopic(ATC.Tools.URLParam("TopicID"));
-            LocalResourceFile = Localization.GetResourceFile(this, "View.ascx." + culture + ".resx");
+
+            /* must be uncommented in multilingual sites*/
+            //LocalResourceFile = Localization.GetResourceFile(this, "View.ascx." + culture + ".resx");
         }
                    
         public string getUserIdByThread()
@@ -191,16 +193,16 @@ namespace DotNetNuke.Modules.uDebateThreads
                 }
 
                 /* Check if hotness icon should be displayed */                
-                if (isThreadHot(Thread_ID))
+               /* if (isThreadHot(Thread_ID))
                 {                  
                     HtmlGenericControl hotThread = item.FindControl("hotThread") as HtmlGenericControl;
                     hotThread.Visible = true;
                     hotThread.Attributes.Add("class", "hotness_" + culture);
                     hotThread.Attributes.Add("title", Localization.GetString("hotness", LocalResourceFile));
-                }
+                }*/
 
                  /* Check which flag to display */ 
-                HtmlGenericControl topicLang = item.FindControl("topicLang") as HtmlGenericControl;
+               /* HtmlGenericControl topicLang = item.FindControl("topicLang") as HtmlGenericControl;
                 Label nationalLbl = item.FindControl("nationalLbl") as Label;
 
                 if (rowView["EuRelated"].ToString() == "True")
@@ -212,7 +214,7 @@ namespace DotNetNuke.Modules.uDebateThreads
                 {
                     nationalLbl.Text = Localization.GetString("ThreadNational", LocalResourceFile);
                     topicLang.Attributes.Add("class", "Topicflag tf_" + rowView["Language"]);
-                }          
+                }      */    
                
                 /* Set the url of the user's profile link */
                 HyperLink Thread_UserLink = item.FindControl("Thread_UserLink") as HyperLink;
@@ -227,7 +229,7 @@ namespace DotNetNuke.Modules.uDebateThreads
                     editLink.NavigateUrl = ConfigurationManager.AppSettings["DomainName"] + "/tabid/" +
                         PortalSettings.ActiveTab.TabID + "/ctl/Edit/mid/" + ModuleId +
                                 "/TopicID/" + TopicID + "/ThreadID/" + Thread_ID +
-                            "/language/" + culture + "/default.aspx";
+                            /*"/language/" + culture + */"/default.aspx";
                     editLink.ImageUrl = ATC.Tools.GetParam("RootURL") + "Images/manage-icn.png";
                     editLink.Attributes.Add("onclick", "return " + UrlUtils.PopUpUrl(editLink.NavigateUrl, this, PortalSettings, true, false));
                     editLink.Visible = true;                   
