@@ -186,4 +186,94 @@
   <data name="hotness.Text" xml:space="preserve">
     <value>HOT</value>
   </data>
+  <data name="Coordinator.Text1" xml:space="preserve">
+    <value>Coordinator</value>
+  </data>
+  <data name="date.Text1" xml:space="preserve">
+    <value>date</value>
+  </data>
+  <data name="EsLabel.Text" xml:space="preserve">
+    <value>Spain</value>
+  </data>
+  <data name="EuLabel.Text" xml:space="preserve">
+    <value>Europe</value>
+  </data>
+  <data name="GrLabel.Text" xml:space="preserve">
+    <value>Greece</value>
+  </data>
+  <data name="hotness.Text1" xml:space="preserve">
+    <value>HOT</value>
+  </data>
+  <data name="HuLabel.Text" xml:space="preserve">
+    <value>Hungary</value>
+  </data>
+  <data name="Inactive.Text1" xml:space="preserve">
+    <value>Inactive</value>
+  </data>
+  <data name="InitiatedCountry.Text" xml:space="preserve">
+    <value>Show debates initiated in:</value>
+  </data>
+  <data name="ItLabel.Text" xml:space="preserve">
+    <value>Italy</value>
+  </data>
+  <data name="Lang.Text1" xml:space="preserve">
+    <value>Lang.</value>
+  </data>
+  <data name="LatestPost.Text1" xml:space="preserve">
+    <value>Latest Post: </value>
+  </data>
+  <data name="NoData.Text1" xml:space="preserve">
+    <value>Sorry. No data found</value>
+  </data>
+  <data name="OpenedDate.Text1" xml:space="preserve">
+    <value>Opened on</value>
+  </data>
+  <data name="Orderby.Text1" xml:space="preserve">
+    <value>Order by</value>
+  </data>
+  <data name="popularity.Text1" xml:space="preserve">
+    <value>popularity</value>
+  </data>
+  <data name="PostBy.Text1" xml:space="preserve">
+    <value>by</value>
+  </data>
+  <data name="Posts.Text1" xml:space="preserve">
+    <value>Posts</value>
+  </data>
+  <data name="Statistics.Text1" xml:space="preserve">
+    <value>u-debate Statistics</value>
+  </data>
+  <data name="ThreadEu.Text1" xml:space="preserve">
+    <value>Eu &lt;br/&gt;thread</value>
+  </data>
+  <data name="ThreadNational.Text1" xml:space="preserve">
+    <value>National &lt;br /&gt; thread</value>
+  </data>
+  <data name="ThreadPost.Text1" xml:space="preserve">
+    <value>Thread &amp; Latest posts</value>
+  </data>
+  <data name="Threads.Text1" xml:space="preserve">
+    <value>Threads</value>
+  </data>
+  <data name="TotalPosts.Text1" xml:space="preserve">
+    <value>Total Posts</value>
+  </data>
+  <data name="TotalThreads.Text1" xml:space="preserve">
+    <value>Total Threads</value>
+  </data>
+  <data name="TotalTopics.Text1" xml:space="preserve">
+    <value>Total Topics</value>
+  </data>
+  <data name="TotalUsers.Text1" xml:space="preserve">
+    <value>Total Registered</value>
+  </data>
+  <data name="TotalViews.Text1" xml:space="preserve">
+    <value>Total Views</value>
+  </data>
+  <data name="Views.Text1" xml:space="preserve">
+    <value>Views</value>
+  </data>
+  <data name="European.text" xml:space="preserve">
+    <value>Is European?</value>
+  </data>
 </root>

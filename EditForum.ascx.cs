@@ -97,7 +97,7 @@ namespace DotNetNuke.Modules.uDebateThreads
             {
                 Exceptions.ProcessModuleLoadException(this, exc);
             }
-            LocalResourceFile = Localization.GetResourceFile(this, "Edit.ascx." + System.Threading.Thread.CurrentThread.CurrentCulture.Name + ".resx");
+            //LocalResourceFile = Localization.GetResourceFile(this, "Edit.ascx." + System.Threading.Thread.CurrentThread.CurrentCulture.Name + ".resx");
         }
 
         public void LoadRecord()

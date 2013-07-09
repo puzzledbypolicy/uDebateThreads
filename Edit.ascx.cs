@@ -126,7 +126,7 @@ namespace DotNetNuke.Modules.uDebateThreads
                     chkActive.SelectedIndex = 0;
                     chkActive.Enabled = false;
                 }
-                LocalResourceFile = Localization.GetResourceFile(this, "Edit.ascx." + System.Threading.Thread.CurrentThread.CurrentCulture.Name + ".resx");
+                //LocalResourceFile = Localization.GetResourceFile(this, "Edit.ascx." + System.Threading.Thread.CurrentThread.CurrentCulture.Name + ".resx");
             }
             catch (Exception exc) //Module failed to load
             {
@@ -266,8 +266,8 @@ namespace DotNetNuke.Modules.uDebateThreads
 
                 NotifyAllUsers(NewID);
 
-                Response.Redirect(ConfigurationManager.AppSettings["DomainName"] + "/" + 
-                System.Threading.Thread.CurrentThread.CurrentCulture.Name + "/udebatediscussion.aspx?Thread=" + NewID);
+                Response.Redirect(ConfigurationManager.AppSettings["DomainName"] +/* "/" + 
+                System.Threading.Thread.CurrentThread.CurrentCulture.Name +*/ "/udebatediscussion.aspx?Thread=" + NewID);
             }
             catch (Exception ex)
             {
