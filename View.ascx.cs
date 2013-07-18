@@ -41,7 +41,8 @@ namespace DotNetNuke.Modules.uDebateThreads
 
             SqluDebateThreads.SelectParameters["TopicID"].DefaultValue = TopicID;
 
-            if (DotNetNuke.Security.PortalSecurity.IsInRoles("Pilot Leaders"))
+           // if (DotNetNuke.Security.PortalSecurity.IsInRoles("Pilot Leaders"))
+            if (Request.IsAuthenticated)
             {
                 SqluDebateThreads.SelectParameters["ThreadStatus"].DefaultValue = "1";
                 /* Add new thread link */

@@ -264,8 +264,6 @@ namespace DotNetNuke.Modules.uDebateThreads
                 
                 string NewID = ATC.Database.sqlGetFirst("SELECT MAX(ID) FROM uDebate_Forum_Threads");
 
-                NotifyAllUsers(NewID);
-
                 Response.Redirect(ConfigurationManager.AppSettings["DomainName"] +/* "/" + 
                 System.Threading.Thread.CurrentThread.CurrentCulture.Name +*/ "/udebatediscussion.aspx?Thread=" + NewID);
             }
@@ -328,16 +326,6 @@ namespace DotNetNuke.Modules.uDebateThreads
             {
                 ATC.MessageBox.Show(ATC.Translate.String("Αδυναμία αποθήκευσης των στοιχείων της εγγραφής.", "", CurrentLanguageCode) + "\r\n" + ATC.Translate.String("Σφάλμα: ", "", CurrentLanguageCode) + ex.Message);
             }
-        }
-
-
-        /* Checks the Notify me option for all registered Users */
-        private void NotifyAllUsers(string threadID)
-        {
-            String SQL = "INSERT INTO uDebate_Forum_Notifications (userID, threadID, userEmail, insertedOn)" +
-                         " SELECT UserID," + threadID + ", Email, GETDATE()"+
-                         " FROM Users";
-            ATC.Database.sqlExecuteCommand(SQL);
         }
     }
 
