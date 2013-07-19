@@ -76,13 +76,13 @@ namespace DotNetNuke.Modules.uDebateThreads
                     string ThreadModerator = ATC.Database.sqlGetFirst("SELECT userID FROM uDebate_Forum_Threads WHERE ID = " + ThreadID);
                     string TopicModerator = ATC.Database.sqlGetFirst("SELECT userID FROM uDebate_Forum_Topics WHERE ID = (SELECT TopicID FROM uDebate_Forum_Threads WHERE ID = " + ThreadID + ")");
                     if (
-                            !(Request.IsAuthenticated && DotNetNuke.Security.PortalSecurity.IsInRoles("Pilot Leaders")
-                        //Portal.Security.HasChangeContentPermission()
-                        //||
+                            !(Request.IsAuthenticated && DotNetNuke.Security.PortalSecurity.IsInRoles("Pilot Leaders"))
+                        &&
+                        !(Request.IsAuthenticated && CurrentUserID.Equals(getUserIdByThread(ThreadID)))
                         //(Session["uDebate_User"] != null && ((DataRow)HttpContext.Current.Session["uDebate_User"])["ID"].ToString() == ThreadModerator)
                         //||
                         //(Session["uDebate_User"] != null && ((DataRow)HttpContext.Current.Session["uDebate_User"])["ID"].ToString() == TopicModerator)
-                             )
+                             
                         )
                     {
                         Response.Redirect(ATC.Tools.GetParam("RootURL") + "AccessDenied.aspx");
@@ -326,6 +326,12 @@ namespace DotNetNuke.Modules.uDebateThreads
             {
                 ATC.MessageBox.Show(ATC.Translate.String("Αδυναμία αποθήκευσης των στοιχείων της εγγραφής.", "", CurrentLanguageCode) + "\r\n" + ATC.Translate.String("Σφάλμα: ", "", CurrentLanguageCode) + ex.Message);
             }
+        }
+
+        public string getUserIdByThread(string thread_id)
+        {
+            string sUserId = ATC.Database.sqlGetFirst("SELECT [UserID] FROM [uDebate_Forum_Threads] where [ID]=" + thread_id);
+            return sUserId;
         }
     }
 

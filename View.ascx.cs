@@ -42,7 +42,8 @@ namespace DotNetNuke.Modules.uDebateThreads
             SqluDebateThreads.SelectParameters["TopicID"].DefaultValue = TopicID;
 
            // if (DotNetNuke.Security.PortalSecurity.IsInRoles("Pilot Leaders"))
-            if (Request.IsAuthenticated)
+            /* OGP registered users can create new threads */
+            if (Request.IsAuthenticated )
             {
                 SqluDebateThreads.SelectParameters["ThreadStatus"].DefaultValue = "1";
                 /* Add new thread link */
@@ -57,8 +58,12 @@ namespace DotNetNuke.Modules.uDebateThreads
                     newThreadLink.Text = " ";
                     newThreadLink.Attributes.Add("onclick", "return " + UrlUtils.PopUpUrl(newThreadLink.NavigateUrl, this, PortalSettings, true, false));
                     newThreadLink.Visible = true;
-                }
+                }               
+            }
 
+            /* OGP pilot leaders can edit topics */
+            if (DotNetNuke.Security.PortalSecurity.IsInRoles("Pilot Leaders"))
+            {
                 /* Edit current topic link */
                 if (!editTopikLink.Visible)
                 {
@@ -83,9 +88,9 @@ namespace DotNetNuke.Modules.uDebateThreads
             //LocalResourceFile = Localization.GetResourceFile(this, "View.ascx." + culture + ".resx");
         }
                    
-        public string getUserIdByThread()
+        public string getUserIdByThread(string thread_id)
         {
-            string sUserId = ATC.Database.sqlGetFirst("SELECT [UserID] FROM [uDebate_Forum_Threads] where [ID]=" + ATC.Tools.URLParam("Thread"));
+            string sUserId = ATC.Database.sqlGetFirst("SELECT [UserID] FROM [uDebate_Forum_Threads] where [ID]=" + thread_id);
             return sUserId;
         }
         public string getUserIdByTopic()
@@ -223,7 +228,8 @@ namespace DotNetNuke.Modules.uDebateThreads
                 
 
                 /* Show edit Topic Link  if the user has edit permissions */
-                if (DotNetNuke.Security.PortalSecurity.IsInRoles("Pilot Leaders"))
+                if (DotNetNuke.Security.PortalSecurity.IsInRoles("Pilot Leaders") ||
+                    (Request.IsAuthenticated && getUserIdByThread(Thread_ID).Equals(UserId.ToString())))
                 {
                     /* Edit thread link */
                     HyperLink editLink = item.FindControl("EditLink") as HyperLink;
