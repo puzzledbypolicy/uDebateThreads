@@ -82,6 +82,16 @@
                     <viewOrder>0</viewOrder>
                   </moduleControl>
                   <moduleControl>
+                    <controlKey>Edit</controlKey>
+                    <controlSrc>DesktopModules/uDebateThreads/EditForum.ascx</controlSrc>
+                    <supportsPartialRendering>False</supportsPartialRendering>
+                    <controlTitle>Edit Topics</controlTitle>
+                    <controlType>Edit</controlType>
+                    <iconFile />
+                    <helpUrl />
+                    <viewOrder>0</viewOrder>
+                  </moduleControl>
+                  <moduleControl>
                     <controlKey>Settings</controlKey>
                     <controlSrc>DesktopModules/uDebateThreads/Settings.ascx</controlSrc>
                     <supportsPartialRendering>False</supportsPartialRendering>
@@ -106,7 +116,7 @@
         </component>
         <component type="File">
           <files>
-            <basePath>DesktopModules/uDebate</basePath>
+            <basePath>DesktopModules/uDebateThreads</basePath>
             <file>
               <path>images/buttons</path>
               <name>btn_restart.png</name>

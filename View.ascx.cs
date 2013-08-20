@@ -66,9 +66,10 @@ namespace DotNetNuke.Modules.uDebateThreads
             {
                 /* Edit current topic link */
                 if (!editTopikLink.Visible)
-                {
+                {         
                     editTopikLink.NavigateUrl = ConfigurationManager.AppSettings["DomainName"] + "/tabid/" +
                      PortalSettings.ActiveTab.TabID + "/ctl/EditForum/mid/" + ModuleId +
+                     "/ForumID/" + getForumId(ATC.Tools.URLParam("TopicID")) +
                    "/TopicID/" + TopicID + "/editItem/TOPIC/language/" /*+ culture */+ "/default.aspx";
 
                     editTopikLink.ImageUrl = ATC.Tools.GetParam("RootURL") + "Images/manage-icn.png";
@@ -135,6 +136,26 @@ namespace DotNetNuke.Modules.uDebateThreads
             }
             return Description;
         }
+
+        public String getForumId(string topicID)
+        {
+            DataRow result = null;
+            string ForumID = String.Empty;
+            string sSQL = @"SELECT ForumID
+                            FROM uDebate_Forum_Topics 
+                            WHERE ID =" + topicID;
+            try
+            {
+                result = ATC.Database.sqlExecuteDataRow(sSQL);
+                ForumID = result["ForumID"].ToString();
+            }
+            catch (Exception x)
+            {
+            }
+            return ForumID;
+        }
+
+        
 
         /* Threads characterised as hot are trheads having at least 
          * 1 new post in past week or at least 5 new posts in past month

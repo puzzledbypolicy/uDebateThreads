@@ -167,7 +167,9 @@
     <None Include="BuildScripts\ModulePackage.targets" />
     <None Include="BuildScripts\MSBuild.Community.Tasks.Targets" />
     <None Include="Providers\DataProviders\SqlDataProvider\00.00.01.SqlDataProvider" />
-    <None Include="uDebateThreads.dnn" />
+    <None Include="uDebateThreads.dnn">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Providers\DataProviders\SqlDataProvider\Uninstall.SqlDataProvider" />
     <None Include="module.css" />
   </ItemGroup>

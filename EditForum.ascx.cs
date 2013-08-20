@@ -190,7 +190,7 @@ namespace DotNetNuke.Modules.uDebateThreads
                             throw new Exception(ATC.Translate.String("Το Forum του θέματος δεν έχει οριστεί.", "", CurrentLanguageCode));
 
                         SQL = String.Format(@"INSERT INTO uDebate_forum_topics(Description, Summary, Active, ForumID, created_by, updated_by, userid, status, ModuleID, Language,Position) 
-                                              VALUES ({0}description, {0}summary, {1}, {2}, {3}, {3}, {3}, 1,{4},{0}language),{5}",
+                                              VALUES ({0}description, {0}summary, {1}, {2}, {3}, {3}, {3}, 1,{4},{0}language,{5})",
                                 ATC.Database.Sql_VariableIdent,
                                 (activeChk.Checked ? "1" : "0"),
                                 ForumID,CurrentUserID,ModuleId,dropDownPosition.SelectedValue);
@@ -203,8 +203,10 @@ namespace DotNetNuke.Modules.uDebateThreads
 
                         //Response.Redirect("forums_edit.aspx?edit=topic&forumid=" + ForumID + "&TopicID=" + TopicID);
 
-                        Response.Redirect(Globals.NavigateURL(PortalSettings.ActiveTab.TabID, "TopicsThreadsByGroupView",
-                                 "mid=" + ModuleId + "&Topic=" + TopicID), true);
+                        lblMessage.Visible = true;
+                        lblMessage.Text = "<div class='dnnFormMessage dnnFormSuccess'>" +
+                                "Topic succesfully created!" +
+                                "</div>";
                     }
                 }
                 else if (Edit != String.Empty)
