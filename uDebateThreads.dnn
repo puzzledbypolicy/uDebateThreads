@@ -82,7 +82,7 @@
                     <viewOrder>0</viewOrder>
                   </moduleControl>
                   <moduleControl>
-                    <controlKey>Edit</controlKey>
+                    <controlKey>EditForum</controlKey>
                     <controlSrc>DesktopModules/uDebateThreads/EditForum.ascx</controlSrc>
                     <supportsPartialRendering>False</supportsPartialRendering>
                     <controlTitle>Edit Topics</controlTitle>
